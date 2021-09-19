@@ -287,6 +287,55 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &526036469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 526036471}
+  - component: {fileID: 526036470}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &526036470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526036469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71761f4e33c25704293f2c91e2924466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _originalCard: {fileID: 1515915638}
+  _images:
+  - {fileID: 21300000, guid: 372d44d7936f6eb49905e682ab249465, type: 3}
+  - {fileID: 21300000, guid: cb2f8f74edb1bbd41847aaa3304934d5, type: 3}
+  - {fileID: 21300000, guid: 02d03450786181b438c67d7dbab18c28, type: 3}
+  - {fileID: 21300000, guid: e468a8b22a1e7e14f9a0dc37e5bd2e0c, type: 3}
+--- !u!4 &526036471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526036469}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &540937077
@@ -383,7 +432,7 @@ GameObject:
   - component: {fileID: 670115654}
   - component: {fileID: 670115655}
   m_Layer: 0
-  m_Name: tree
+  m_Name: symbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -536,7 +585,7 @@ Transform:
   m_LocalScale: {x: 999, y: 999, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1515915637
 GameObject:
@@ -550,7 +599,7 @@ GameObject:
   - component: {fileID: 1515915640}
   - component: {fileID: 1515915638}
   m_Layer: 0
-  m_Name: TreeCard
+  m_Name: MemoryCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -569,6 +618,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardBack: {fileID: 124885297}
+  cardSymbolRenderer: {fileID: 670115655}
+  controller: {fileID: 526036470}
 --- !u!4 &1515915639
 Transform:
   m_ObjectHideFlags: 0
@@ -577,14 +628,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515915637}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: -6, y: 1.5, z: 0}
   m_LocalScale: {x: 2, y: 3, z: 1}
   m_Children:
   - {fileID: 124885298}
   - {fileID: 670115654}
   - {fileID: 540937078}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1515915640
 BoxCollider2D:
