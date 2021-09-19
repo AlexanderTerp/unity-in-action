@@ -19,9 +19,15 @@ public class MemoryCard : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (cardBack.activeSelf)
+        if (cardBack.activeSelf && controller.CanReveal)
         {
             cardBack.SetActive(false);
+            controller.CardRevealed(this);
         }
+    }
+
+    public void Unreveal()
+    {
+        cardBack.SetActive(true);
     }
 }

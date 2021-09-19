@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SceneController : MonoBehaviour
 {
@@ -9,8 +10,15 @@ public class SceneController : MonoBehaviour
     public const float OFFSET_X = 2.5f;
     public const float OFFSET_Y = 3.5f;
 
+    public bool CanReveal { get { return _secondRevealed == null; } }
+
     [SerializeField] private MemoryCard _originalCard;
+    [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private Sprite[] _images;
+
+    private int _score = 0;
+    private MemoryCard _firstRevealed;
+    private MemoryCard _secondRevealed;
 
     void Start()
     {
@@ -41,6 +49,36 @@ public class SceneController : MonoBehaviour
                 newCard.transform.position = new Vector3(posX, posY, startPos.z);
             }
         }
+    }
+
+    public void CardRevealed(MemoryCard card)
+    {
+        if (_firstRevealed == null)
+        {
+            _firstRevealed = card;
+        }
+        else
+        {
+            _secondRevealed = card;
+            StartCoroutine(CheckMatch());
+        }
+    }
+
+    private IEnumerator CheckMatch()
+    {
+        if (_firstRevealed.Id == _secondRevealed.Id)
+        {
+            _score++;
+            scoreText.text = "Score: " + _score;
+        }
+        else
+        {
+            yield return new WaitForSeconds(.5f);
+            _firstRevealed.Unreveal();
+            _secondRevealed.Unreveal();
+        }
+        _firstRevealed = null;
+        _secondRevealed = null;
     }
 
     private List<Sprite> GenerateSpritesToAssign()
