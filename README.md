@@ -23,3 +23,9 @@ Involved drawing some more ~~bad~~ great pixel art for the card symbols.
 <img src="./media/tree.png" width="40"> <img src="./media/sword.png" width="40"> <img src="./media/shield.png" width="40"> <img src="./media/face.png" width="40"> <img src="./media/horse.png" width="40"> <img src="./media/crown.png" width="40">
 
 <img src="./media/2021-09-20-memory-gameplay.gif" width="600">
+
+## Part 3 - Basic 2D Platformer
+
+A very basic 2D platformer. The GIF belows pretty much captures it entirely. The book used it to teach animations via sprite sheets, camera following, a little section on `OnDrawGizmos` which was very handy, and some other (mainly platform) stuff.
+
+<img src="./media/2021-09-20-platformer-gameplay.gif" width="600">
