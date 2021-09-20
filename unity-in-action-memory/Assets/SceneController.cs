@@ -6,10 +6,8 @@ using TMPro;
 
 public class SceneController : MonoBehaviour
 {
-    public const int NUM_GRID_ROWS = 2;
-    public const int NUM_GRID_COLS = 4;
-    public const float OFFSET_X = 2.5f;
-    public const float OFFSET_Y = 3.5f;
+    private const int STANDARD_UNIQUE_CARDS = 4;
+    private const float INTER_CARD_BUFFER = 0.5f;
 
     public bool CanReveal { get { return _secondRevealed == null; } }
 
@@ -21,14 +19,15 @@ public class SceneController : MonoBehaviour
     private MemoryCard _firstRevealed;
     private MemoryCard _secondRevealed;
 
+
     void Start()
     {
         List<Sprite> spritesToAssign = GenerateSpritesToAssign();
 
         Vector3 startPos = _originalCard.transform.position;
-        for (int colIndex = 0; colIndex < NUM_GRID_COLS; colIndex++)
+        for (int colIndex = 0; colIndex < _images.Length; colIndex++)
         {
-            for (int rowIndex = 0; rowIndex < NUM_GRID_ROWS; rowIndex++)
+            for (int rowIndex = 0; rowIndex < 2; rowIndex++)
             {
                 MemoryCard newCard;
                 if (colIndex == 0 && rowIndex == 0)
@@ -45,9 +44,7 @@ public class SceneController : MonoBehaviour
                 spritesToAssign.RemoveAt(id);
                 newCard.SetCard(spriteToAssign.GetHashCode(), spriteToAssign);
 
-                float posX = (OFFSET_X * colIndex) + startPos.x;
-                float posY = -(OFFSET_Y * rowIndex) + startPos.y;
-                newCard.transform.position = new Vector3(posX, posY, startPos.z);
+                PlaceCard(newCard, startPos, rowIndex, colIndex);
             }
         }
     }
@@ -85,6 +82,18 @@ public class SceneController : MonoBehaviour
         }
         _firstRevealed = null;
         _secondRevealed = null;
+    }
+
+    private void PlaceCard(MemoryCard newCard, Vector3 startPos, int rowIndex, int colIndex)
+    {
+        float standardToCurrentSizingRatio = STANDARD_UNIQUE_CARDS / (float)_images.Length;
+
+        float offsetX = newCard.transform.localScale.x + INTER_CARD_BUFFER * standardToCurrentSizingRatio;
+        float offsetY = newCard.transform.localScale.y + INTER_CARD_BUFFER * standardToCurrentSizingRatio;
+
+        float posX = (offsetX * colIndex) + startPos.x;
+        float posY = -(offsetY * rowIndex) + startPos.y;
+        newCard.transform.position = new Vector3(posX, posY, startPos.z);
     }
 
     private List<Sprite> GenerateSpritesToAssign()
