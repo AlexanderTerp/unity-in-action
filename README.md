@@ -10,7 +10,7 @@ It teaches Unity through various mini-projects. This repository contains my impl
 
 A very basic "FPS" with a CharacterController and randomly moving AI which shoots a slow-moving projectile at the player when they're in front of the AI. The player has a hit-scan ability to shoot dead these AI.
 
-There's a second scene which contains a little level of walls and a burning bench. The bench is an imported 3D Unity asset, the fire is a projectile system using custom drawn "fire" particles (below, truly top quality!)
+There's a second scene which contains a little level of walls and a burning bench. The bench is an imported 3D Unity asset, the fire is a projectile system using my custom drawn "fire" particles (below, truly top quality!)
 
 <img src="./media/fire.png" width="50">
 
@@ -20,7 +20,4 @@ A simple 2D implementation of "the memory game" i.e. faced with a grid of top-do
 
 Involved drawing some more ~~bad~~ great pixel art for the card symbols.
 
-<img src="./media/tree.png" width="40">
-<img src="./media/sword.png" width="40">
-<img src="./media/shield.png" width="40">
-<img src="./media/face.png" width="40">
+<img src="./media/tree.png" width="40"> <img src="./media/sword.png" width="40"> <img src="./media/shield.png" width="40"> <img src="./media/face.png" width="40"> <img src="./media/horse.png" width="40"> <img src="./media/crown.png" width="40">

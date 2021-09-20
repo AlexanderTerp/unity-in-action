@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class SceneController : MonoBehaviour
@@ -62,6 +63,11 @@ public class SceneController : MonoBehaviour
             _secondRevealed = card;
             StartCoroutine(CheckMatch());
         }
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 
     private IEnumerator CheckMatch()
