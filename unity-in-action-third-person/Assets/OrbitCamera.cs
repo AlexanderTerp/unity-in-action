@@ -7,7 +7,7 @@ public class OrbitCamera : MonoBehaviour
 {
     public float rotationSpeed = 1.5f;
 
-    [SerializeField] private Transform _target;
+    [SerializeField] private Transform _target = null;
     private float _rotY;
     private Vector3 _offset;
 
@@ -20,14 +20,8 @@ public class OrbitCamera : MonoBehaviour
     void LateUpdate()
     {
         float horInput = Input.GetAxis("Horizontal");
-        if (horInput != 0)
-        {
-            _rotY += horInput * rotationSpeed;
-        }
-        else
-        {
-            _rotY += Input.GetAxis("Mouse X") * rotationSpeed * 3;
-        }
+        _rotY += horInput * rotationSpeed;
+        _rotY += Input.GetAxis("Mouse X") * rotationSpeed * 3;
 
         Quaternion rotation = Quaternion.Euler(0, _rotY, 0);
         transform.position = _target.position - (rotation * _offset);
