@@ -15,12 +15,14 @@ public class RelativeMovement : MonoBehaviour
     [SerializeField] private Transform _target = null;
 
     private CharacterController _charController;
+    private Animator _animator;
     private float _vertSpeed;
     private ControllerColliderHit _contact;
 
     void Awake()
     {
         _charController = GetComponent<CharacterController>();
+        _animator = GetComponent<Animator>();
         _vertSpeed = minFall;
     }
 
@@ -52,6 +54,8 @@ public class RelativeMovement : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(movement);
         }
 
+        _animator.SetFloat("Speed", movement.sqrMagnitude);
+
         bool hitGround = false;
         RaycastHit hit;
         if (_vertSpeed < 0 && Physics.Raycast(transform.position, Vector3.down, out hit))
@@ -69,6 +73,7 @@ public class RelativeMovement : MonoBehaviour
             else
             {
                 _vertSpeed = minFall;
+                _animator.SetBool("Jumping", false);
             }
         }
         else
@@ -77,6 +82,10 @@ public class RelativeMovement : MonoBehaviour
             if (_vertSpeed < terminalVelocity)
             {
                 _vertSpeed = terminalVelocity;
+            }
+            if (_contact != null)
+            {
+                _animator.SetBool("Jumping", true);
             }
             if (_charController.isGrounded)
             {

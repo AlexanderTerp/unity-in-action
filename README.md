@@ -24,8 +24,14 @@ Involved drawing some more ~~bad~~ great pixel art for the card symbols.
 
 <img src="./media/2021-09-20-memory-gameplay.gif" width="600">
 
-## Part 3 - Basic 2D Platformer
+## Part 2 - Basic 2D Platformer
 
 A very basic 2D platformer. The GIF belows pretty much captures it entirely. The book used it to teach animations via sprite sheets, camera following, a little section on `OnDrawGizmos` which was very handy, and some other (mainly platform) stuff.
 
 <img src="./media/2021-09-20-platformer-gameplay.gif" width="600">
+
+## Part 2 - Third Person Movement
+
+A little demo of a third person camera with a 3D-modeled player character capable of moving around and jumping, complete with animations.
+
+<img src="./media/2021-09-25-third-person.gif" width="600">
