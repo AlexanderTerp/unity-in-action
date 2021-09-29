@@ -11,6 +11,7 @@ public class RelativeMovement : MonoBehaviour
     public float gravity = -9.81f;
     public float terminalVelocity = -10.0f;
     public float minFall = -1.5f;
+    public float pushForce = 3.0f;
 
     [SerializeField] private Transform _target = null;
 
@@ -108,5 +109,10 @@ public class RelativeMovement : MonoBehaviour
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         _contact = hit;
+        Rigidbody body = hit.collider.attachedRigidbody;
+        if (body != null && !body.isKinematic)
+        {
+            body.velocity = hit.moveDirection * pushForce;
+        }
     }
 }

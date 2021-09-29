@@ -21,4 +21,22 @@ public class DoorOpenDevice : MonoBehaviour
         }
         _open = !_open;
     }
+
+    public void Activate()
+    {
+        if (!_open)
+        {
+            transform.position += dPos;
+            _open = true;
+        }
+    }
+
+    public void Deactivate()
+    {
+        if (_open)
+        {
+            transform.position -= dPos;
+            _open = false;
+        }
+    }
 }
