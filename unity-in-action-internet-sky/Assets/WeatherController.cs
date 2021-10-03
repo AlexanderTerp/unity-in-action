@@ -9,17 +9,25 @@ public class WeatherController : MonoBehaviour
     [SerializeField] private Light sun;
 
     private float _fullIntensity;
-    private float _cloudValue = 0f;
 
     void Start()
     {
         _fullIntensity = sun.intensity;
     }
 
-    void Update()
+    void Awake()
     {
-        SetOvercast(_cloudValue);
-        _cloudValue += .2f * Time.deltaTime;
+        Events.WeatherUpdated += OnWeatherUpdated;
+    }
+
+    void OnDestroy()
+    {
+        Events.WeatherUpdated -= OnWeatherUpdated;
+    }
+
+    private void OnWeatherUpdated()
+    {
+        SetOvercast(Managers.Weather.CloudValue);
     }
 
     private void SetOvercast(float value)
